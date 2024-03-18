@@ -1,0 +1,15 @@
+package sec1;
+
+class ManagerLogin extends jFrame {	// GUI 관리자 창
+	
+	public ManagerLogin() {
+		
+	}
+}
+
+public class GUIServer {
+
+	public static void main(String[] args) {
+		new ManagerLogin();
+	}
+}

@@ -1,0 +1,16 @@
+package sec2;
+
+import java.net.ServerSocket;
+
+public class MultiServer {
+
+	public static void main(String[] args) {
+		MultiServer multiServer = new MultiServer();
+		multiServer.start();
+	}
+	
+	public void start() {
+		ServerSocket server = null;
+		
+	}
+}
