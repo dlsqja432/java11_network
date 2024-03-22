@@ -8,10 +8,10 @@ public class Test4client {
 	public static void main(String[] args) {
 		try {
 			String ip = InetAddress.getLocalHost().getHostAddress();
-//			Socket 객체를 생성할 때, 서버의 ip주소와 port번호를 넣고 생성해야 연결가능한데, 넣지않음.
+//			Socket 객체를 생성할 때, 서버소켓의 ip주소와 port번호가 지정되지 않아 소켓통신을 할 수 없다.
 			Socket s = new Socket(ip, 3000);
 		} catch (Exception e) {
 			e.printStackTrace();
-		}
+		} 
 	}	
 }

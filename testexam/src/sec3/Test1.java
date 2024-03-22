@@ -1,6 +1,6 @@
 package sec3;
 
-import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 
 public class Test1 {
@@ -10,19 +10,22 @@ public class Test1 {
 	}
 	
 	public static void output1() {
-		BufferedWriter fos = null;
+		FileWriter fos = null;
 		try {
-//			FileOutputStream 은 바이트 단위로 데이터를 쓰기 때문에, 문자열을 바이트로  변환할 때 특정 인코딩을
-//			지정하지 않으면 기본적으로 시스템의 기본 문자 인코딩을 사용한다. 따라서 기본 문자 인코딩이 UTF-8이 아니면
-//			한글이 깨질 수 있다.
-			
-//			fos = new BufferedWriter("test.txt");
+//			11행과 13행에서 1byte만 다루는 OutputStream을 사용하기 때문에 2byte인 한글은 정상적으로 출력되지 않는다.
+			fos = new FileWriter("test.txt");
 			String str = "안녕하세요!";
-			for(int i=0; i<str.length(); i++) {
-				fos.write(str.charAt(i));
-			}
+			fos.write(str);
 		} catch (IOException e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				fos.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
+//		finally 구문의 예외 발생 유무와 관계 없이 자원 반환을 해야하는 close()구문을 작성하지 않았으므로
+//		반환 의무 위배가 발생한다.
 	}
 }

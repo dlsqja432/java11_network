@@ -11,20 +11,25 @@ public class Test5 {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "1234");
+//			url을 나타내는 "jdbc:mysql://localhost:3306" 문장에서 데이터베이스 이름이 지정되지 않았으므로
+//			해당 데이터베이스에 연걸되지 못한다.
+			Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kh", "root", "1234");
 			
-//			preparedStatement에는 db를 작동할 String타입의 query를 넣어야 하는데, query가 선언되어있지않음
-//			결과값을 보면 db에 저장된 값을 불러와 출력하는 코드이므로, query에는 select구문이 들어가야함
-			String query = "select * from tableName";
+//			Application 클래스의 PreparedStatement pst = con.prepareStatement(query);
+//			의 문장에서 아직 query의 sql 구문이 지정되지 않았으므로 해당 쿼리를 실행할 수 없다.
+			String query = "select * from employee";
 			PreparedStatement pst = con.prepareStatement(query);
 			
-//			ResultSet은 db로부터 query결과를 담는 인터페이스이므로, db의 데이터를 바꾸는 것이 아니기 때문에
-//			excuteUpdate를 사용하는 것은 잘못됨.
+//			Application 클래스의 ResultSet rs = pst.executeUpdate(); 문장에서 executeUpdate()
+//			메소드는 int를 반환하므로 해당 검색 결과인 ResultSet을 반환받을 수 없다.
 			ResultSet rs = pst.executeQuery();
 			
-//			rs는 db로부터 값을 저장한 것일 뿐, 조건문이 아니기 때문에, while뒤에 괄화에 rs만 오는 것은 오류가 발생한다.
-			while(rs != null) {
-				System.out.println(rs.getString("empId") + " / " + rs.getString("empName"));
+//			Application 클래스의 while(rs) 문장에서 rs는 다음 레코드를 지칭해야 레코드가 끝날 때 까지 반복수행
+//			할 수 없으므로 진행되지 못한다.
+			while(rs.next()) {
+//				Application 클래스의 System.out.println(rs.getString("empId") + " / " + rs.getString("empName"));
+//				문장에서 empId와 empName 컬럼이 존재하지 않으므로 해당 컬럼에 접근할 수 없다.
+				System.out.println(rs.getString("emp_id") + " / " + rs.getString("emp_name"));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
