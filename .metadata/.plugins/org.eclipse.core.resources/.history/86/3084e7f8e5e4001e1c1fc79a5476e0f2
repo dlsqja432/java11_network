@@ -1,7 +1,0 @@
-package sec1;
-
-import java.util.Collections;
-
-public class ReceiveThread extends Thread {
-	static List<PrintWriter> list = Collections.synchronizedList(new ArrayList<PrintWriter>())  
-}

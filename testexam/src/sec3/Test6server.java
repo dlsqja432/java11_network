@@ -22,7 +22,7 @@ public class Test6server {
 			server = new ServerSocket(port);
 			System.out.println("[Server]");
 			System.out.println("클라이언트의 요청을 기다리고 있습니다...");
-//			socket 객체로 클라이언트 소켓과 연결해야 하는데, 코드가 빠져있음
+//			서버 소켓에서 클라이언트의 연결을 기다리는 코드가 빠져있어, 클라이언트와 통신을 할 수 없음.
 			socket = server.accept();
 			System.out.println(socket.getInetAddress().getHostAddress() + "가 연결요청");
 			br = new BufferedReader(new InputStreamReader(socket.getInputStream()));

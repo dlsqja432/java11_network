@@ -10,4 +10,6 @@
 	<li><a href="test05.jsp">표현언어의 비교문장</a></li>
 	<li><a href="test06.jsp">JSTL의 core 태그</a></li>
 	<li><a href="test07.jsp">JSTL의 fmt 태그</a></li>
+	<li><a href="test11.jsp">액션 태그 - useBean, forward</a></li>
+	<li><a href="test12.jsp">액션 태그 - forward, param</a></li>
 </ul>
